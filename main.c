@@ -6,13 +6,15 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:51:21 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/23 22:05:17 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/28 22:46:53 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 #include "libft.h"
 
 int main (void)
@@ -25,8 +27,8 @@ int main (void)
 	char src[20] = "Somos Todos 42 SP !!";
 	char dest1[50] = "Testedestring";
 	char dest2[50] = "Testedestring";
-	char dest3[50] = "Testedestring";
-	char dest4[50] = "Testedestring";
+	char dest3[50] = "jjjjjjjjjjjjjjjjjjjjjjjjjjjjj";
+	char dest4[50] = "jjjjjjjjjjjjjjjjjjjjjjjjjjjjj";
 	char dest5[50] = "Testedestring";
 	char dest6[50] = "Testedestring";
 	char *ret1;
@@ -63,9 +65,9 @@ int main (void)
 	printf("\n>> Memcpy STRING.H:	%s\n", dest2);
 
 	//FT_MEMCCPY
-	ft_memccpy(dest3, src, 'd', 5);
+	ft_memccpy(dest3, "zyxwvutsrqponmlkjihgfedcba", 'r', 20);
 	printf("\n>> Memccpy LIBFT.H:	%s", dest3);
-	memccpy(dest4, src, 'd', 5);
+	memccpy(dest4, "zyxwvutsrqponmlkjihgfedcba", 'r', 20);
 	printf("\n>> Memccpy STRING.H:	%s\n", dest4);
 
 	//FT_MEMMOVE
@@ -75,9 +77,9 @@ int main (void)
 	printf("\n>> Memmove STRING.H:	%s\n", dest6);
 
 	//FT_MEMCHR
-	ret1 = ft_memchr(src, 'x', 15);
+	ret1 = ft_memchr(src, 'T', 15);
 	printf("\n>> Memchr LIBFT.H:	%s", ret1);
-	ret2 = memchr(src, 'x', 15);
+	ret2 = memchr(src, 'T', 15);
 	printf("\n>> Memchr STRING.H:	%s\n", ret2);
 
 	//FT_MEMCMP
@@ -113,6 +115,38 @@ int main (void)
 	printf("\n>> Strnstr LIBFT.H:	%s", ret1);
 	ret2 = strnstr("Hello World !!", "llo ", 5);
 	printf("\n>> Strnstr STRING.H:	%s\n", ret2);
+
+	//FT_STRNCMP
+	printf("\n>> Strnstr LIBFT.H:	%d", ft_strncmp("Hello World", "Hello Word", 15));
+	printf("\n>> Strnstr STRING.H:	%d\n", strncmp("Hello World", "Hello Word", 15));
+
+	//FT_ISALPHA
+	printf("\n>> Isalpha LIBFT.H:	%d", ft_isalpha('E'));
+	printf("\n>> Isalpha CTYPE.H:	%d\n", isalpha('E'));
+
+	//FT_ISDIGIT
+	printf("\n>> Isdigit LIBFT.H:	%d", ft_isdigit('G'));
+	printf("\n>> Isdigit CTYPE.H:	%d\n", isdigit('G'));
+	
+	//FT_ISALNUM
+	printf("\n>> Isalnum LIBFT.H:	%d", ft_isalnum('$'));
+	printf("\n>> Isalnum CTYPE.H:	%d\n", isalnum('$'));
+
+	//FT_ISASCII
+	printf("\n>> Isascii LIBFT.H:	%d", ft_isascii('n'));
+	printf("\n>> Isascii CTYPE.H:	%d\n", isascii('n'));
+
+	//FT_TOUPPER
+	printf("\n>> Toupper LIBFT.H:	%c", ft_toupper('x'));
+	printf("\n>> Toupper CTYPE.H:	%c\n", toupper('x'));
+
+	//FT_TOLOWER
+	printf("\n>> Tolower LIBFT.H:	%c", ft_tolower('X'));
+	printf("\n>> Tolower CTYPE.H:	%c\n", tolower('X'));
+
+	//FT_ATOI
+	printf("\n>> Atoi LIBFT.H:	%d", (1 * ft_atoi("\n\n\n  -46\b9 \n5d6")));
+	printf("\n>> Atoi STDLIB.H:	%d\n", (1 * atoi("\n\n\n  -46\b9 \n5d6")));
 
 	return 0;
 }

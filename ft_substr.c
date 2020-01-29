@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 19:39:59 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 22:06:30 by gmarsi           ###   ########.fr       */
+/*   Created: 2020/01/28 19:45:15 by gmarsi            #+#    #+#             */
+/*   Updated: 2020/01/28 21:02:19 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*dest;
-	char	*source;
+	char	*substr;
 	size_t	i;
 
-	dest = (char*)dst;
-	source = (char*)src;
 	i = 0;
-	while (source[i] != (unsigned char)c && i < n)
-	{
-		dest[i] = source[i];
-		i += 1;
-	}
-	if (source[i] == (unsigned char)c)
-	{
-		dest[i] = source[i];
-		return (dst + i + 1);
-	}
-	else
+	if (!(substr = malloc(len * sizeof(char))))
 		return (NULL);
+	while (i < len)
+	{
+		substr[i] = s[start - 1 + i];
+		i++;
+	}
+	return (substr);
 }

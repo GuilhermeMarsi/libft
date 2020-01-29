@@ -6,18 +6,18 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:55:11 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/22 18:38:34 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/28 20:55:17 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memset(void *str, int c, size_t i)
+void	*ft_memset(void *str, int c, size_t i)
 {
-	size_t j;
-	char *s;
+	size_t	j;
+	char	*s;
 
-	if(str == NULL)
+	if (str == NULL)
 		return (NULL);
 	s = str;
 	j = 0;
