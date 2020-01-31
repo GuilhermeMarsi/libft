@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 21:15:07 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/29 20:04:58 by gmarsi           ###   ########.fr       */
+/*   Created: 2020/01/29 22:30:40 by gmarsi            #+#    #+#             */
+/*   Updated: 2020/01/30 18:48:41 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char		*dest;
-	const unsigned char	*source;
-	size_t				i;
+	char	*str;
+	int		i;
+	int		j;
+	int		k;
 
+	j = ft_strlen((char*)s1) + ft_strlen((char*)s2);
+	if (!(str = (char*)malloc(sizeof(char) * (j + 1))))
+		return (NULL);
 	i = 0;
-	dest = (unsigned char*)dst;
-	source = (unsigned char*)src;
-	if (source < dest)
+	while (s1[i])
 	{
-		while (++i <= len)
-			dest[len - i] = source[len - i];
+		str[i] = s1[i];
+		i++;
 	}
-	else
+	k = 0;
+	while (s2[k])
 	{
-		while (i < len)
-		{
-			dest[i] = source[i];
-			i++;
-		}
+		str[i + k] = s2[k];
+		k++;
 	}
-	return (dst);
+	return (str);
 }

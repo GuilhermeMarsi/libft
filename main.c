@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:51:21 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 22:46:53 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/29 22:35:39 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int main (void)
 	printf("\n>> Strnstr STRING.H:	%s\n", ret2);
 
 	//FT_STRNCMP
-	printf("\n>> Strnstr LIBFT.H:	%d", ft_strncmp("Hello World", "Hello Word", 15));
-	printf("\n>> Strnstr STRING.H:	%d\n", strncmp("Hello World", "Hello Word", 15));
+	printf("\n>> Strncmp LIBFT.H:	%d", ft_strncmp("Hello World", "Hello Word", 15));
+	printf("\n>> Strncmp STRING.H:	%d\n", strncmp("Hello World", "Hello Word", 15));
 
 	//FT_ISALPHA
 	printf("\n>> Isalpha LIBFT.H:	%d", ft_isalpha('E'));

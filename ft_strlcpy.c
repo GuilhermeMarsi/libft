@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:16:13 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/23 19:30:25 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/29 20:29:22 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 	while (src[c] != '\0')
 		c++;
 	i = 0;
-	while (src[i] != '\0' && i < (size - 1) && size != 0)
+	if (size == 0)
+		return (c);
+	while (src[i] != '\0' && i < (size - 1))
 	{
 		dest[i] = src[i];
 		i++;

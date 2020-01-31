@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 19:45:15 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 21:02:19 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/29 22:27:14 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (i < len)
 	{
-		substr[i] = s[start - 1 + i];
+		substr[i] = s[start + i];
 		i++;
 	}
+	substr[i] = '\0';
 	return (substr);
 }

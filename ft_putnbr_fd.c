@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 21:15:07 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/29 20:04:58 by gmarsi           ###   ########.fr       */
+/*   Created: 2020/01/30 21:26:28 by gmarsi            #+#    #+#             */
+/*   Updated: 2020/01/30 21:50:44 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned char		*dest;
-	const unsigned char	*source;
-	size_t				i;
-
-	i = 0;
-	dest = (unsigned char*)dst;
-	source = (unsigned char*)src;
-	if (source < dest)
+	if (n == -2147483648)
 	{
-		while (++i <= len)
-			dest[len - i] = source[len - i];
+		write(fd, "-2", 2);
+		n = 147483648;
 	}
-	else
+	if (n < 0)
 	{
-		while (i < len)
-		{
-			dest[i] = source[i];
-			i++;
-		}
+		write(fd, "-", 1);
+		n *= -1;
 	}
-	return (dst);
+	if (n > 10)
+		ft_putnbr_fd((n / 10), fd);
+	n %= 10;
+	n += 48;
+	write(fd, &n, 1);
 }

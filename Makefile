@@ -6,7 +6,7 @@
 #    By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/21 22:17:26 by gmarsi            #+#    #+#              #
-#    Updated: 2020/01/28 19:46:44 by gmarsi           ###   ########.fr        #
+#    Updated: 2020/01/30 21:53:57 by gmarsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,15 @@ SRC =	main.c			\
 		ft_calloc.c		\
 		ft_strdup.c		\
 		ft_substr.c		\
+		ft_strjoin.c	\
+		ft_strtrim.c	\
+		ft_putchar_fd.c	\
+		ft_putstr_fd.c	\
+		ft_putendl_fd.c	\
+		ft_putnbr_fd.c	\
+		ft_itoa.c		\
+		#ft_split.c		\
+		#ft_strmapi.c	\
 		
 OBJ = 	main.o			\
 		ft_strlen.o		\
@@ -69,6 +78,15 @@ OBJ = 	main.o			\
 		ft_calloc.o		\
 		ft_strdup.o		\
 		ft_substr.o		\
+		ft_strjoin.o	\
+		ft_strtrim.o	\
+		ft_putchar_fd.o	\
+		ft_putstr_fd.o	\
+		ft_putendl_fd.o	\
+		ft_putnbr_fd.o	\
+		ft_itoa.o		\
+		#ft_split.o		\
+		#ft_strmapi.o	\
 
 all : $(NAME)
 
