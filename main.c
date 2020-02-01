@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:51:21 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/29 22:35:39 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/01/31 20:41:18 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,9 @@ int main (void)
 	//FT_ATOI
 	printf("\n>> Atoi LIBFT.H:	%d", (1 * ft_atoi("\n\n\n  -46\b9 \n5d6")));
 	printf("\n>> Atoi STDLIB.H:	%d\n", (1 * atoi("\n\n\n  -46\b9 \n5d6")));
+
+	//FT_ITOA
+	printf("\n>> Itoa LIBFT.H:	%s", ft_itoa(-2147483648));
 
 	return 0;
 }
