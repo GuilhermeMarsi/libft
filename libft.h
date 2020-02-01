@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:57:28 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/30 21:54:24 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/01 02:29:43 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+
+typedef struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 size_t	ft_strlen(char *str);
 void	*ft_memset(void *str, int c, size_t i);
@@ -47,5 +53,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_itoa(int n);
+char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char 	**ft_split(char const *s, char c);
 
 #endif
