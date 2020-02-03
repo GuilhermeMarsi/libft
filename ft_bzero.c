@@ -6,23 +6,26 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 21:48:54 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 19:29:01 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/03 20:35:52 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *str, size_t i)
+void	ft_bzero(void *s, size_t tamanho)
 {
-	size_t	j;
-	char	*s;
+	size_t	i;
+	char	*frase;
 
-	s = str;
-	j = 0;
-	while (s[j] || j < i)
+	frase = (char*)s;
+	i = 0;
+	if (tamanho > 0)
 	{
-		if (j < i)
-			s[j] = '\0';
-		j++;
+		while (i < tamanho)
+		{
+			if (i < tamanho)
+				frase[i] = '\0';
+			i++;
+		}
 	}
 }

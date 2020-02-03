@@ -6,63 +6,48 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 21:41:31 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/02/01 03:00:42 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/03 19:30:15 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_extract_words(char const *str, char cc, char **txt)
+char		**ft_extract_words(char const *str, char cc, char **txt)
 {
+	int ini;
 	int i;
 	int lin;
 	int col;
 
 	i = 0;
+	ini = 0;
 	lin = 0;
 	col = 0;
 	while (str[i])
 	{
-		if (str[i] == cc && col > 0)
-		{	
-			txt[lin][col] = '\0';
-			lin++;
-			col = 0;
-		}
-		else
+		if (str[i] != cc)
 		{
-			txt[lin][col] = str[i];
-			col++;
-		}
-		i++;
-	}
-	txt[lin][col] = '\0';
-	txt[lin] = 0;
-}
-
-int		ft_biggest_word(char const *str, char cc)
-{
-	int	a;
-	int	b;
-	int	ii;
-
-	a = 0;
-	b = 0;
-	ii = 0;
-	while (str[ii])
-	{
-		if (str[ii] == cc)
-		{	
-			b = (a > b) ? a : b;
-			a = 0;
+			ini = i;
+			while (str[i] != cc && str[i] != '\0')
+				i++;
+			if(!(txt[lin] = (char*)malloc(sizeof(char) * (i - ini + 1))))
+				return(NULL);
+			while (ini < i)
+			{
+				txt[lin][col] = str[ini];
+				ini++;
+				col++;
+			}
+			txt[lin][col] = '\0';
+			col = 0;
+			lin++;
 		}
 		else
-			a++;
-		ii++;
+			while (str[i] == cc && str[i])
+				i++;
 	}
-	if (b == 0 && a > b)
-		b = a;
-	return (b);
+	txt[lin] = 0;
+	return (txt);
 }
 
 int		ft_word_count(char const *str, char cc)
@@ -90,23 +75,14 @@ int		ft_word_count(char const *str, char cc)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**txt;
+	char	**txt1;
 	int		words;
-	int		bw;
 	int		j;
 
 	j = 0;
 	words = ft_word_count(s, c) + 1;
-	bw = ft_biggest_word(s, c) + 1;
-	if (!(txt = (char**)malloc(words * sizeof(char*))))
+	if (!(txt1 = (char**)malloc(words * sizeof(char*))))
 		return (NULL);
-	while (j <= words)
-	{
-		if(!(txt[j] = (char*)malloc(bw * sizeof(char))))
-			return (NULL);
-		j++;
-	}
-	ft_extract_words(s, c, txt);
-	free(txt);
-	return (txt);
+	ft_extract_words(s, c, txt1);
+	return (txt1);
 }

@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:41:00 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 22:44:30 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/03 19:42:55 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t i)
 	char		*dest;
 	const char	*source;
 
-	if (dst == NULL || src == NULL)
-		return (NULL);
 	dest = dst;
 	source = src;
 	j = 0;
