@@ -6,11 +6,18 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:49:35 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/30 20:52:41 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/03 22:39:20 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_init_variables(int *d, int *c, int *ini)
+{
+	*d = 0;
+	*c = 0;
+	*ini = 0;
+}
 
 void	ft_finalcaract(int *cc, int *f, char const *setting, char const *str)
 {
@@ -51,13 +58,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		c;
 	int		d;
 
-	d = 0;
-	c = 0;
-	ini = 0;
+	ft_init_variables(&d, &c, &ini);
 	fim = ft_initialcaract(s1, set, &ini, &c);
 	if (ini >= fim)
 	{
 		str = (char*)malloc(sizeof(char) * 1);
+		str[0] = '\0';
 		return (str);
 	}
 	ft_finalcaract(&c, &fim, set, s1);
