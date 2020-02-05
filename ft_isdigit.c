@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 19:35:00 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/27 19:57:11 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/04 21:40:05 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	if ((unsigned char)c > 47 && (unsigned char)c < 58)
+	if (c > 47 && c < 58)
 		return (1);
 	return (0);
 }

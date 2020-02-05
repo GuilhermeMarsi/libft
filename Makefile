@@ -6,7 +6,7 @@
 #    By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/21 22:17:26 by gmarsi            #+#    #+#              #
-#    Updated: 2020/02/01 02:34:45 by gmarsi           ###   ########.fr        #
+#    Updated: 2020/02/04 21:46:25 by gmarsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-SRC =	main.c			\
-		ft_strlen.c		\
+SRC =	ft_strlen.c		\
 		ft_memset.c		\
 		ft_bzero.c		\
 		ft_memcpy.c		\
@@ -61,8 +60,7 @@ SRC =	main.c			\
 		#ft_lstiter.c	\
 		#ft_lstmap.c		\
 		
-OBJ = 	main.o			\
-		ft_strlen.o		\
+OBJ = 	ft_strlen.o		\
 		ft_memset.o		\
 		ft_bzero.o		\
 		ft_memcpy.o		\

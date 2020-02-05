@@ -6,11 +6,17 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:49:35 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/02/03 22:39:20 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/05 19:44:55 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_transfer(char *str1, const char *s2, int *dd, int *inic)
+{
+	str1[*dd] = s2[*inic + *dd];
+	*dd = *dd + 1;
+}
 
 void	ft_init_variables(int *d, int *c, int *ini)
 {
@@ -58,6 +64,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		c;
 	int		d;
 
+	if (s1 == 0 || set == 0)
+		return (0);
 	ft_init_variables(&d, &c, &ini);
 	fim = ft_initialcaract(s1, set, &ini, &c);
 	if (ini >= fim)
@@ -70,10 +78,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!(str = (char*)malloc(sizeof(char) * (fim - ini + 1 + 1))))
 		return (NULL);
 	while (ini + d <= fim)
-	{
-		str[d] = s1[ini + d];
-		d++;
-	}
+		ft_transfer(str, s1, &d, &ini);
 	str[d] = '\0';
 	return (str);
 }

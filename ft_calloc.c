@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 18:20:58 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 20:54:47 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/05 19:27:00 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	i;
 
 	i = 0;
-	if (count == 0 || size == 0)
-		return (NULL);
 	ret = malloc(count * size);
 	if (ret == NULL)
 		return (NULL);
-	while (i < count)
+	while (i < count * size)
 	{
 		((char*)ret)[i] = 0;
 		i += 1;

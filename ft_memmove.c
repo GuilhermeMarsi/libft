@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 21:15:07 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/29 20:04:58 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/04 22:14:08 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else
 	{
-		while (i < len)
+		while (i < len && dst != src)
 		{
 			dest[i] = source[i];
 			i++;
