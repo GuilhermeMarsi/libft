@@ -6,7 +6,7 @@
 #    By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/21 22:17:26 by gmarsi            #+#    #+#              #
-#    Updated: 2020/02/05 22:06:59 by gmarsi           ###   ########.fr        #
+#    Updated: 2020/02/05 22:30:27 by gmarsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,15 +51,15 @@ SRC =	ft_strlen.c		\
 		ft_strmapi.c	\
 		ft_split.c		\
 
-SRC_B =	#ft_lstnew.c	\
-		#ft_lstadd_front.c	\
-		#ft_lstsize.c	\
-		#ft_lstlast.c	\
-		#ft_lstadd_back.c	\
-		#ft_lstdelone.c	\
-		#ft_lstclear.c	\
-		#ft_lstiter.c	\
-		#ft_lstmap.c		\
+SRC_B =	ft_lstnew.c	\
+		ft_lstadd_front.c	\
+		ft_lstsize.c	\
+		ft_lstlast.c	\
+		ft_lstadd_back.c	\
+		ft_lstdelone.c	\
+		ft_lstclear.c	\
+		ft_lstiter.c	\
+		ft_lstmap.c		\
 		
 OBJ =	$(subst .c,.o,$(SRC))
 
