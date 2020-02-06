@@ -6,7 +6,7 @@
 #    By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/21 22:17:26 by gmarsi            #+#    #+#              #
-#    Updated: 2020/02/04 21:46:25 by gmarsi           ###   ########.fr        #
+#    Updated: 2020/02/05 22:06:59 by gmarsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRC =	ft_strlen.c		\
 		ft_itoa.c		\
 		ft_strmapi.c	\
 		ft_split.c		\
-		#ft_lstnew.c	\
+
+SRC_B =	#ft_lstnew.c	\
 		#ft_lstadd_front.c	\
 		#ft_lstsize.c	\
 		#ft_lstlast.c	\
@@ -60,63 +61,30 @@ SRC =	ft_strlen.c		\
 		#ft_lstiter.c	\
 		#ft_lstmap.c		\
 		
-OBJ = 	ft_strlen.o		\
-		ft_memset.o		\
-		ft_bzero.o		\
-		ft_memcpy.o		\
-		ft_strlcpy.o	\
-		ft_memccpy.o	\
-		ft_memmove.o	\
-		ft_memchr.o		\
-		ft_memcmp.o		\
-		ft_strlcat.o	\
-		ft_strchr.o		\
-		ft_strrchr.o	\
-		ft_strnstr.o	\
-		ft_strncmp.o	\
-		ft_isalpha.o	\
-		ft_isdigit.o	\
-		ft_isalnum.o	\
-		ft_isascii.o	\
-		ft_isprint.o	\
-		ft_toupper.o	\
-		ft_tolower.o	\
-		ft_atoi.o		\
-		ft_calloc.o		\
-		ft_strdup.o		\
-		ft_substr.o		\
-		ft_strjoin.o	\
-		ft_strtrim.o	\
-		ft_putchar_fd.o	\
-		ft_putstr_fd.o	\
-		ft_putendl_fd.o	\
-		ft_putnbr_fd.o	\
-		ft_itoa.o		\
-		ft_strmapi.o	\
-		ft_split.o		\
-		#ft_lstnew.o	\
-		#ft_lstadd_front.o	\
-		#ft_lstsize.o	\
-		#ft_lstlast.o	\
-		#ft_lstadd_back.o	\
-		#ft_lstdelone.o	\
-		#ft_lstclear.o	\
-		#ft_lstiter.o	\
-		#ft_lstmap.o		\
+OBJ =	$(subst .c,.o,$(SRC))
+
+OBJ_B =	$(subst .c,.o,$(SRC_B))
 
 all : $(NAME)
 
 $(NAME): $(OBJ) libft.h
 	@echo "Compiling ..."
-	ar -r $(NAME) $(OBJ)
+	@ar -r $(NAME) $(OBJ)
 	@echo "Done !"
 
 OBJ: $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC)
+	@$(CC) $(CFLAGS) -c $(SRC)
+
+bonus: $(OBJ_B)
+
+$(OBJ_B):
+	@$(CC) $(CFLAGS) -c $(SRC_B) $(SRC)
+	@ar rc $(NAME) $(OBJ_B) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
 	@echo "Remove File *.o  ..."
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ) $(OBJ_B)
 	@echo "Done !"
 
 fclean: clean
