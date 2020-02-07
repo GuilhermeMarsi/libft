@@ -6,34 +6,33 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 19:30:46 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/29 22:11:22 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:44:45 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	size_t	c;
-	size_t	d;
+	size_t i;
+	size_t t_dst;
+	size_t t_src;
+	size_t soma;
 
-	c = 0;
-	j = 0;
-	i = ft_strlen(dst);
-	if (i >= dstsize)
-		return (ft_strlen((char*)src) + dstsize);
-	while (dst[j] && j <= (dstsize - 1))
-		j++;
-	d = j;
-	while (src[c] && j < (dstsize - 1) && dstsize > 0)
+	i = 0;
+	t_dst = ft_strlen(dst);
+	t_src = ft_strlen(src);
+	if (n > t_dst)
+		soma = t_dst + t_src;
+	else
+		soma = n + t_src;
+	while (src[i] != '\0' && t_dst < (n - 1) && n > 0)
 	{
-		dst[j] = src[c];
-		j++;
-		c++;
+		dst[t_dst] = src[i];
+		i++;
+		t_dst++;
 	}
-	if (d < dstsize)
-		dst[j] = '\0';
-	return (d + ft_strlen((char*)src));
+	if (t_dst <= n)
+		dst[t_dst] = '\0';
+	return (soma);
 }

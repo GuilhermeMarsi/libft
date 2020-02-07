@@ -6,20 +6,20 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:43:52 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 21:16:57 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:24:40 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_spaces(int *a, const char *str)
+static void	ft_spaces(int *a, const char *str)
 {
 	while (str[*a] == ' ' || str[*a] == '\t' || str[*a] == '\n' ||
 			str[*a] == '\r' || str[*a] == '\v' || str[*a] == '\f')
 		*a = *a + 1;
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int num;
 	int sinal;

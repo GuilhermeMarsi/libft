@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 20:23:53 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/28 20:56:00 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:29:26 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	int		j;
-	char	*str;
+	char	*frase;
 
+	frase = (void *)s;
 	i = 0;
-	str = (char*)s;
-	j = ft_strlen(str) + 1;
-	while (i < j)
+	while (frase[i] != '\0')
 	{
-		if (str[i] == (char)c)
-			return (&str[i]);
+		if (frase[i] == (char)c)
+			return (&frase[i]);
 		i++;
 	}
-	return (NULL);
+	if ((char)c == '\0')
+		return (&frase[i]);
+	else
+		return (0);
 }

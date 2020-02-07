@@ -6,56 +6,30 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 21:41:31 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/02/05 19:46:21 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:24:05 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_empty_tab(const char *str1, int *iii, char ccc)
+static char		*ret(const char *fr, int inicial, int final)
 {
-	while (str1[*iii] == ccc && str1[*iii])
-		*iii = *iii + 1;
-}
+	char	*string;
+	int		i;
 
-int			ft_suport(int *inic, int *iii, const char *str1, char ccc)
-{
-	*inic = *iii - 1;
-	while (str1[*iii] != ccc && str1[*iii] != '\0')
-		*iii = *iii + 1;
-	return (0);
-}
-
-char		**ft_extract_words(char const *str, char cc, char **txt, int ii)
-{
-	int ini;
-	int	lin;
-	int	col;
-
-	lin = 0;
-	while (str[ii])
+	i = 0;
+	string = (char*)malloc((final - inicial + 1) * sizeof(char));
+	while (final > inicial)
 	{
-		if (str[ii] != cc)
-		{
-			col = ft_suport(&ini, &ii, str, cc);
-			if (!(txt[lin] = (char*)malloc(sizeof(char) * (ii - ini + 1))))
-				return (NULL);
-			while (++ini < ii)
-			{
-				txt[lin][col] = str[ini];
-				col++;
-			}
-			txt[lin][col] = '\0';
-			lin++;
-		}
-		else
-			ft_empty_tab(str, &ii, cc);
+		string[i] = fr[inicial];
+		i++;
+		inicial++;
 	}
-	txt[lin] = 0;
-	return (txt);
+	string[i] = '\0';
+	return (string);
 }
 
-int			ft_word_count(char const *str, char cc)
+static int		ft_word_count(char const *str, char cc)
 {
 	int	sn;
 	int	w;
@@ -64,7 +38,7 @@ int			ft_word_count(char const *str, char cc)
 	w = 0;
 	ii = 0;
 	sn = 0;
-	while (str[ii])
+	while (str[ii] != '\0' && str[0] != '\0')
 	{
 		if (str[ii] == cc)
 			sn = 0;
@@ -78,20 +52,31 @@ int			ft_word_count(char const *str, char cc)
 	return (w);
 }
 
-char		**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	char	**txt1;
-	int		words;
-	int		j;
-	int		i;
+	char	**split;
+	int		inicial;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	j = 0;
-	if (s == 0 || c == 0)
-		return (0);
-	words = ft_word_count(s, c) + 1;
-	if (!(txt1 = (char**)malloc(words * sizeof(char*))))
+	if (s == 0)
 		return (NULL);
-	ft_extract_words(s, c, txt1, i);
-	return (txt1);
+	i = -1;
+	j = 0;
+	inicial = -1;
+	split = malloc((ft_word_count(s, c) + 1) * sizeof(char*));
+	if (split == 0)
+		return (NULL);
+	while (++i <= ft_strlen(s))
+	{
+		if (s[i] != c && inicial < 0)
+			inicial = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && inicial >= 0)
+		{
+			split[j++] = ret(s, inicial, i);
+			inicial = -1;
+		}
+	}
+	split[j] = NULL;
+	return (split);
 }

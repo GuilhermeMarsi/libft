@@ -6,70 +6,62 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 21:52:00 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/01/31 20:58:30 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/07 19:25:08 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_special_case(int *nn)
+static int	tamanho(int n)
 {
-	char	*txt;
+	int tamanho;
 
-	if (*nn != -2147483648)
-		return (NULL);
-	else
+	tamanho = 0;
+	if (n < 0)
+		n = n * -1;
+	while (n > 0)
 	{
-		txt = (char*)malloc(12 * sizeof(char));
-		txt[0] = '-';
-		txt[1] = '2';
-		txt[2] = '1';
-		txt[3] = '4';
-		txt[4] = '7';
-		txt[5] = '4';
-		txt[6] = '8';
-		txt[7] = '3';
-		txt[8] = '6';
-		txt[9] = '4';
-		txt[10] = '8';
-		txt[11] = '\0';
+		n = n / 10;
+		tamanho++;
 	}
-	return (txt);
+	return (tamanho);
 }
 
-void	ft_initialize_values(int *mm, int *nn, int *ii)
+static int	potencia(int tamanho)
 {
-	*ii = (*nn == 0) ? 1 : 0;
-	while (*mm != 0)
+	int	pot;
+
+	pot = 1;
+	while (tamanho > 0)
 	{
-		*ii = *ii + 1;
-		*mm /= 10;
+		pot = pot * 10;
+		tamanho--;
 	}
-	*ii = (*nn < 0) ? *ii + 2 : *ii + 1;
+	return (pot);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	char	*str;
+	char	*ret;
+	int		pot;
 	int		i;
-	int		m;
 
-	m = n;
-	if (ft_special_case(&n) != NULL)
-		return (ft_special_case(&n));
-	ft_initialize_values(&m, &n, &i);
-	if (!(str = (char*)malloc(sizeof(char) * i)))
+	if (!(ret = (char*)malloc((tamanho(n) + 2) * sizeof(char))))
 		return (NULL);
-	m = 1;
-	n = (n < 0) ? n *= -1 : n;
-	while (m < i)
+	if (n == -2147483648)
+		return (ft_substr("-2147483648", 0, 11));
+	i = 0;
+	if (n < 0)
 	{
-		str[i - m - 1] = ((n % 10) + '0');
-		n /= 10;
-		m++;
+		ret[i++] = '-';
+		n = n * -1;
 	}
-	if (str[0] == '0' && i > 2)
-		str[0] = '-';
-	str[i - 1] = '\0';
-	return (str);
+	pot = potencia(tamanho(n) - 1);
+	while (pot > 0)
+	{
+		ret[i++] = (n / pot % 10 + 48);
+		pot = pot / 10;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
