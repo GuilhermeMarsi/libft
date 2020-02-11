@@ -6,7 +6,7 @@
 /*   By: gmarsi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:57:28 by gmarsi            #+#    #+#             */
-/*   Updated: 2020/02/07 20:08:34 by gmarsi           ###   ########.fr       */
+/*   Updated: 2020/02/10 19:23:53 by gmarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlcat(char *restrict dst,
 				const char *restrict src, size_t n);
-char                *ft_strchr(const char *s, int c);
+char				*ft_strchr(const char *s, int c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strnstr(const char *h, const char *n, size_t len);
